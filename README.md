@@ -1,5 +1,7 @@
 # fileio 
 #### By Kwankaew Uttama
+
+## Result
 Task | Time
 ------|------
 Copy the file one byte at a time|15.136635 sec
