@@ -1,12 +1,12 @@
-fileio 
+# fileio 
 Task | Time
-|------|------|
-|Copy the file one byte at a time|15.136635 sec|
-|Copy the file using a byte array of size 1 KB|0.030880 sec|
-|Copy the file using a byte array of size 4 KB|0.009481 sec|
-|Copy the file using a byte array of size 64 KB|0.004491 sec|
-|Copy the file using a BufferedReader and PrintWriter to copy lines of text|0.511842 sec|
-|Copy a file by using BufferedReader and BufferedWriter with a array of char|0.032533 sec|
+------|------
+Copy the file one byte at a time|15.136635 sec
+Copy the file using a byte array of size 1 KB|0.030880 sec
+Copy the file using a byte array of size 4 KB|0.009481 sec
+Copy the file using a byte array of size 64 KB|0.004491 sec
+Copy the file using a BufferedReader and PrintWriter to copy lines of text|0.511842 sec
+Copy a file by using BufferedReader and BufferedWriter with a array of char|0.032533 sec
 
 ##### Why Copy the file one byte at a time slowear?
 Because it read just one byte in each time.
