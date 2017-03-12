@@ -140,10 +140,6 @@ public class FileCopyTask implements Runnable {
 	public static void main(String[] args) {
 		final String inputFilename = "Big-Alice-in-Wonderland.txt";
 		String out = "copyfile.txt";
-		// Define a FileUtil task to copy a file byte by byte.
-		// This is an anonymous class that extends FileUtilTimer.
-		// TODO Can you make this code shorter by passing the filenames
-		// as parameters to the superclass constructor?
 
 		ByteCopyTask task1 = new ByteCopyTask(inputFilename, out);
 		BlockSizeCopyTask task2 = new BlockSizeCopyTask(inputFilename, out, 1);
@@ -169,15 +165,29 @@ public class FileCopyTask implements Runnable {
  * Copy the InputStream to the OutputStream one byte at time.
  */
 class ByteCopyTask extends FileCopyTask {
+	/**
+	 * set the input and output file in FileCopyTask method.
+	 * 
+	 * @param infilename
+	 *            is input file.
+	 * @param outfilename
+	 *            is output file.
+	 */
 	public ByteCopyTask(String infilename, String outfilename) {
 		super(infilename, outfilename);
 	}
 
+	/**
+	 * run file in FileUtil class.
+	 */
 	@Override
 	public void run() {
 		FileUtil.copy(in, out);
 	}
 
+	/**
+	 * print the thing that this class do.
+	 */
 	@Override
 	public String toString() {
 		return "Copy the file one byte at a time\n";
@@ -193,17 +203,33 @@ class BlockSizeCopyTask extends FileCopyTask {
 	private static final int bytes = 1024;
 	private int blockSize = 0;
 
+	/**
+	 * set the input and output file in FileCopyTask method.
+	 * 
+	 * @param infilename
+	 *            is input file.
+	 * @param outfilename
+	 *            is output file.
+	 * @param blocksize
+	 *            is the size of byte array.
+	 */
 	public BlockSizeCopyTask(String infilename, String outfilename,
 			int blocksize) {
 		super(infilename, outfilename);
 		this.blockSize = blocksize;
 	}
 
+	/**
+	 * run file in FileUtil class.
+	 */
 	@Override
 	public void run() {
 		FileUtil.copy(in, out, this.blockSize * bytes);
 	}
 
+	/**
+	 * print the thing that this class do.
+	 */
 	public String toString() {
 		return "Copy the file using a byte of size " + this.blockSize + "KB\n";
 	}
@@ -215,15 +241,31 @@ class BlockSizeCopyTask extends FileCopyTask {
  * line at at time.
  */
 class BufferedReaderCopyTask extends FileCopyTask {
+	/**
+	 * set the input and output file in FileCopyTask method.
+	 * 
+	 * @param infilename
+	 *            is input file.
+	 * @param outfilename
+	 *            is output file.
+	 * @param blocksize
+	 *            is the size of array.
+	 */
 	public BufferedReaderCopyTask(String infilename, String outfilename) {
 		super(infilename, outfilename);
 	}
 
+	/**
+	 * run file in FileUtil class.
+	 */
 	@Override
 	public void run() {
 		FileUtil.bcopy(in, out);
 	}
 
+	/**
+	 * print the thing that this class do.
+	 */
 	public String toString() {
 		return "Copy the file using BufferedReader and PrintWriter\n";
 	}
@@ -237,11 +279,22 @@ class BufferedReaderCopyTask extends FileCopyTask {
 class BufferedWriteCopyTask extends FileCopyTask {
 	private static final int bytes = 1024;
 
+	/**
+	 * set the input and output file in FileCopyTask method.
+	 * 
+	 * @param infilename
+	 *            is input file.
+	 * @param outfilename
+	 *            is output file.
+	 */
 	public BufferedWriteCopyTask(String infilename, String outfilename,
 			int blocksize) {
 		super(infilename, outfilename);
 	}
 
+	/**
+	 * run file in FileUtil method.
+	 */
 	@Override
 	public void run() {
 		FileUtil.bbcopy(in, out, bytes);
